@@ -1,17 +1,13 @@
 import './App.css'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import {useReducer, useState} from 'react'
+import {useState} from 'react'
 import {CreateItemForm} from './CreateItemForm'
-import {
-  changeTaskStatusAC,
-  changeTaskTitleAC,
-  createTaskAC, deleteTaskAC,
-  tasksReducer
-} from './model/tasks-reducer'
+import {changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC} from './model/tasks-reducer'
 import {
   changeTodolistFilterAC,
-  changeTodolistTitleAC, createTodolistAC, deleteTodolistAC,
-  todolistsReducer
+  changeTodolistTitleAC,
+  createTodolistAC,
+  deleteTodolistAC
 } from './model/todolists-reducer'
 import {TodolistItem} from './TodolistItem'
 import AppBar from '@mui/material/AppBar'
@@ -47,8 +43,8 @@ export type TasksState = Record<string, Task[]>
 type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
-  const [todolists, dispatchToTodolists] = useSelector<RootState, Todolist[]>((state) => state.todolists)
-  const [tasks, dispatchToTasks] = useSelector<RootState, TasksState>(state => state.tasks)
+  const todolists = useSelector<RootState, Todolist[]>((state) => state.todolists)
+  const tasks = useSelector<RootState, TasksState>(state => state.tasks)
 
   const dispatch = useDispatch()
 
@@ -74,12 +70,10 @@ export const App = () => {
   const createTodolist = (title: string) => {
     const action = createTodolistAC(title)
     dispatch(action)
-    dispatch(action)
   }
 
   const deleteTodolist = (todolistId: string) => {
     const action = deleteTodolistAC(todolistId)
-    dispatch(action)
     dispatch(action)
   }
 
