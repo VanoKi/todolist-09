@@ -5,6 +5,9 @@ import {createAction} from "@reduxjs/toolkit";
 export const deleteTodolistAC = createAction<{ id: string }>('todolists/deleteTodoList')
 export const changeTodolistTitleAC = createAction<{id: string, title: string}>('todolists/changeTodolistTitle')
 export const changeTodolistFilterAC = createAction<{id:string, filter: FilterValues}>('todolists/changeTodolistFilter')
+export const createTodolistAC = createAction('todolists/createTodoList', (title:string) => {
+  return {payload: {title, id: v1()}}
+})
 
 const initialState: Todolist[] = []
 
@@ -26,10 +29,6 @@ export const todolistsReducer = (state: Todolist[] = initialState, action: Actio
     default:
       return state
   }
-}
-
-export const createTodolistAC = (title: string) => {
-  return {type: 'create_todolist', payload: { title, id: v1() }} as const
 }
 
 export type DeleteTodolistAction = ReturnType<typeof deleteTodolistAC>
