@@ -24,6 +24,10 @@ export const todolistReducer = createReducer(initialState, (builder) => {
       const index = state.findIndex(todo => todo.id === action.payload.id)
       if (index !== -1) state[index].title = action.payload.title
     })
+    .addCase(changeTodolistFilterAC, (state, action) => {
+      const todolist = state.find(todo => todo.id === action.payload.id)
+      if (todolist) todolist.filter = action.payload.filter
+    })
 })
 
 export const todolistsReducer2 = (state: Todolist[] = initialState, action: Actions): Todolist[] => {
