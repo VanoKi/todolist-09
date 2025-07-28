@@ -12,10 +12,18 @@ export const createTodolistAC = createAction('todolists/createTodolis', (title:s
 const initialState: Todolist[] = []
 
 export const todolistReducer = createReducer(initialState, (builder) => {
-  builder.addCase(deleteTodolistAC, (state, action) => {
+  builder
+    .addCase(deleteTodolistAC, (state, action) => {
     const index = state.findIndex(todo => todo.id === action.payload.id)
     if (index !== -1) state.splice(index, 1)
   })
+    .addCase(createTodolistAC, (state, action) => {
+      state.push({id: action.payload.id, title: action.payload.title, filter: 'all'})
+    })
+    .addCase(changeTodolistTitleAC, (state, action) => {
+      const index = state.findIndex(todo => todo.id === action.payload.id)
+      if (index !== -1) state[index].title = action.payload.title
+    })
 })
 
 export const todolistsReducer2 = (state: Todolist[] = initialState, action: Actions): Todolist[] => {
