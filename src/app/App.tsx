@@ -43,7 +43,7 @@ export type TasksState = Record<string, Task[]>
 type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
-  const todolists = useSelector<RootState>((state) => state.todolists)
+  const todolists = useSelector<RootState, Todolist[]>((state) => state.todolists)
   const [tasks, dispatchToTasks] = useReducer(tasksReducer, {})
 
   const [themeMode, setThemeMode] = useState<ThemeMode>('light')
