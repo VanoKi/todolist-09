@@ -1,15 +1,15 @@
 import './App.css'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import {useState} from 'react'
-import {CreateItemForm} from './CreateItemForm'
-import {changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC} from './model/tasks-reducer'
+import {CreateItemForm} from '../CreateItemForm'
+import {changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC} from '../model/tasks-reducer'
 import {
   changeTodolistFilterAC,
   changeTodolistTitleAC,
   createTodolistAC,
   deleteTodolistAC
-} from './model/todolists-reducer'
-import {TodolistItem} from './TodolistItem'
+} from '../model/todolists-reducer'
+import {TodolistItem} from '../TodolistItem'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -19,12 +19,12 @@ import Grid from '@mui/material/Grid2'
 import Paper from '@mui/material/Paper'
 import Switch from '@mui/material/Switch'
 import CssBaseline from '@mui/material/CssBaseline'
-import {containerSx} from './TodolistItem.styles'
-import {NavButton} from './NavButton'
-import {useAppDispatch} from "./common/useAppDispatch.ts";
-import {useAppSelector} from "./common/useAppSelectors.ts";
-import {selectTodoLists} from "./model/todolists-selectors.ts";
-import {selectTasks} from "./model/tasks-selectors.ts";
+import {containerSx} from '../TodolistItem.styles'
+import {NavButton} from '../NavButton'
+import {useAppSelector} from "../common/hooks/useAppSelector.ts";
+import {useAppDispatch} from "../common/hooks/useAppDispatch.ts";
+import {selectTodolists} from "../model/todolists-selectors.ts";
+import {selectTasks} from "../model/tasks-selectors.ts";
 
 export type Todolist = {
   id: string
@@ -45,13 +45,10 @@ export type TasksState = Record<string, Task[]>
 type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
-  const todolists = useAppSelector(selectTodoLists)
+  const todolists = useAppSelector(selectTodolists)
   const tasks = useAppSelector(selectTasks)
-
   const dispatch = useAppDispatch()
-
   const [themeMode, setThemeMode] = useState<ThemeMode>('light')
-
   const theme = createTheme({
     palette: {
       mode: themeMode,
@@ -76,6 +73,7 @@ export const App = () => {
 
   const deleteTodolist = (todolistId: string) => {
     const action = deleteTodolistAC(todolistId)
+    dispatch(action)
     dispatch(action)
   }
 
