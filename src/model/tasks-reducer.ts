@@ -9,7 +9,7 @@ export const tasksReducer = createReducer(initialState, builder => {
     delete state[action.payload.id]
   })
     .addCase(createTodolistAC, (state, action) => {
-      state[action.payload.id] = {}
+      state[action.payload.id] = []
     })
 })
 export const tasksReducer2 = (state: TasksState = initialState, action: Actions): TasksState => {
