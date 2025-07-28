@@ -1,19 +1,19 @@
 import './App.css'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import {useReducer, useState} from 'react'
-import {CreateItemForm} from './CreateItemForm'
+import {CreateItemForm} from '../CreateItemForm'
 import {
   changeTaskStatusAC,
   changeTaskTitleAC,
   createTaskAC, deleteTaskAC,
   tasksReducer
-} from './model/tasks-reducer'
+} from '../model/tasks-reducer'
 import {
   changeTodolistFilterAC,
   changeTodolistTitleAC, createTodolistAC, deleteTodolistAC,
   todolistsReducer
-} from './model/todolists-reducer'
-import {TodolistItem} from './TodolistItem'
+} from '../model/todolists-reducer'
+import {TodolistItem} from '../TodolistItem'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -23,8 +23,8 @@ import Grid from '@mui/material/Grid2'
 import Paper from '@mui/material/Paper'
 import Switch from '@mui/material/Switch'
 import CssBaseline from '@mui/material/CssBaseline'
-import {containerSx} from './TodolistItem.styles'
-import {NavButton} from './NavButton'
+import {containerSx} from '../TodolistItem.styles'
+import {NavButton} from '../NavButton'
 
 export type Todolist = {
   id: string
