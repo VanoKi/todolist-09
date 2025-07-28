@@ -24,6 +24,8 @@ import {NavButton} from '../NavButton'
 import {useAppSelector} from "../common/hooks/useAppSelector.ts";
 import {useAppDispatch} from "../common/hooks/useAppDispatch.ts";
 import {RootState} from "./store.ts";
+import {selectTodolists} from "../model/todolists-selectors.ts";
+import {selectTasks} from "../model/tasks-selectors.ts";
 
 export type Todolist = {
   id: string
@@ -42,7 +44,6 @@ export type FilterValues = 'all' | 'active' | 'completed'
 export type TasksState = Record<string, Task[]>
 
 type ThemeMode = 'dark' | 'light'
-
 
 export const App = () => {
   const todolists = useAppSelector(selectTodolists)
