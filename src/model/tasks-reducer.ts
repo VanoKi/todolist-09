@@ -12,6 +12,7 @@ export const tasksReducer = createReducer(initialState, builder => {
       state[action.payload.id] = []
     })
 })
+
 export const tasksReducer2 = (state: TasksState = initialState, action: Actions): TasksState => {
   switch (action.type) {
     case 'delete_task': {
