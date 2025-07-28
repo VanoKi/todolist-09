@@ -2,16 +2,12 @@ import './App.css'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import {useReducer, useState} from 'react'
 import {CreateItemForm} from '../CreateItemForm'
-import {
-  changeTaskStatusAC,
-  changeTaskTitleAC,
-  createTaskAC, deleteTaskAC,
-  tasksReducer
-} from '../model/tasks-reducer'
+import {changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC, tasksReducer} from '../model/tasks-reducer'
 import {
   changeTodolistFilterAC,
-  changeTodolistTitleAC, createTodolistAC, deleteTodolistAC,
-  todolistsReducer
+  changeTodolistTitleAC,
+  createTodolistAC,
+  deleteTodolistAC
 } from '../model/todolists-reducer'
 import {TodolistItem} from '../TodolistItem'
 import AppBar from '@mui/material/AppBar'
@@ -25,6 +21,8 @@ import Switch from '@mui/material/Switch'
 import CssBaseline from '@mui/material/CssBaseline'
 import {containerSx} from '../TodolistItem.styles'
 import {NavButton} from '../NavButton'
+import {useSelector} from "react-redux";
+import {RootState} from "./store.ts";
 
 export type Todolist = {
   id: string
@@ -45,7 +43,7 @@ export type TasksState = Record<string, Task[]>
 type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
-  const [todolists, dispatchToTodolists] = useReducer(todolistsReducer, [])
+  const todolists = useSelector<RootState>((state) => state.todolists)
   const [tasks, dispatchToTasks] = useReducer(tasksReducer, {})
 
   const [themeMode, setThemeMode] = useState<ThemeMode>('light')
