@@ -44,7 +44,8 @@ type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
   const todolists = useSelector<RootState, Todolist[]>((state) => state.todolists)
-  const [tasks, dispatchToTasks] = useReducer(tasksReducer, {})
+  const tasks = useSelector<RootState, TasksState>((state) => state.tasks)
+  // const [tasks, dispatchToTasks] = useReducer(tasksReducer, {})
 
   const [themeMode, setThemeMode] = useState<ThemeMode>('light')
 
