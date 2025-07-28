@@ -46,8 +46,8 @@ type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
   const todolists = useAppSelector((state) => state.todolists)
-  const tasks = useAppDispatch((state) => state.tasks)
-  const dispatch = useDispatch()
+  const tasks = useAppSelector((state) => state.tasks)
+  const dispatch = useAppDispatch()
   const [themeMode, setThemeMode] = useState<ThemeMode>('light')
 
   const theme = createTheme({
