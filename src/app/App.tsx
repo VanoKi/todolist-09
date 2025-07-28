@@ -23,6 +23,8 @@ import {containerSx} from '../TodolistItem.styles'
 import {NavButton} from '../NavButton'
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "./store.ts";
+import {useAppSelector} from "../common/hooks/useAppSelector.ts";
+import {useAppDispatch} from "../common/hooks/useAppDispatch.ts";
 
 export type Todolist = {
   id: string
@@ -43,8 +45,8 @@ export type TasksState = Record<string, Task[]>
 type ThemeMode = 'dark' | 'light'
 
 export const App = () => {
-  const todolists = useSelector<RootState, Todolist[]>((state) => state.todolists)
-  const tasks = useSelector<RootState, TasksState>((state) => state.tasks)
+  const todolists = useAppSelector((state) => state.todolists)
+  const tasks = useAppDispatch((state) => state.tasks)
   const dispatch = useDispatch()
   const [themeMode, setThemeMode] = useState<ThemeMode>('light')
 
