@@ -23,7 +23,6 @@ import {containerSx} from '../TodolistItem.styles'
 import {NavButton} from '../NavButton'
 import {useAppSelector} from "../common/hooks/useAppSelector.ts";
 import {useAppDispatch} from "../common/hooks/useAppDispatch.ts";
-import {RootState} from "./store.ts";
 import {selectTodolists} from "../model/todolists-selectors.ts";
 import {selectTasks} from "../model/tasks-selectors.ts";
 
