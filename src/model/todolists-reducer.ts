@@ -10,7 +10,7 @@ export const createTodolistAC = createAction('todolists/createTodolis', (title:s
 
 const initialState: Todolist[] = []
 
-export const todolistReducer = createReducer(initialState, (builder) => {
+export const todolistsReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(deleteTodolistAC, (state, action) => {
     const index = state.findIndex(todo => todo.id === action.payload.id)
